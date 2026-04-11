@@ -60,8 +60,8 @@ export async function searchJobs(params: {
   if (params.where) url.searchParams.set("where", params.where);
 
   const res = await fetch(url.toString(), {
-    // Cache for 15 minutes at the edge — same title queries are common.
-    next: { revalidate: 900 },
+        // Don't cache — avoids serving stale error responses.
+        cache: 'no-store',
   });
   if (!res.ok) {
     throw new Error(`Adzuna HTTP ${res.status}`);

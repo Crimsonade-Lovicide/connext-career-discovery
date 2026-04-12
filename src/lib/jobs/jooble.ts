@@ -79,5 +79,5 @@ export async function searchJobs(params: {
 }
 
 function stripHtml(s: string): string {
-    return s.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+    return s.replace(/<[^>]+>/g, "").replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&#?\w+;/g, " ").replace(/\s+/g, " ").trim();
 }

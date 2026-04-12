@@ -95,7 +95,7 @@ export default function Report({
           <h3 className="text-[11px] uppercase tracking-[0.28em] text-white/40">
             Careers that fit
           </h3>
-          <span className="text-[11px] text-white/30">Live listings via Adzuna</span>
+          <span className="text-[11px] text-white/30">Live listings via Jooble</span>
         </div>
         <div className="space-y-3">
           {careers.map((c, i) => (

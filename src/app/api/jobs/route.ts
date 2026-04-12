@@ -1,4 +1,4 @@
-import { searchJobs } from "@/lib/jobs/adzuna";
+import { searchJobs } from "@/lib/jobs/jooble";
 import { getClientKey, rateLimit } from "@/lib/rateLimit";
 
 export const runtime = "nodejs";

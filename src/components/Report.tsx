@@ -270,7 +270,7 @@ function CareerCard({ career, index, location }: { career: CareerMatch; index: n
           {error && <p className="text-xs text-rose-300/90">{error}</p>}
           {jobs && jobs.length === 0 && (
             <p className="text-xs text-white/50">
-              No open listings found right now.
+              {location.trim() ? `No matching jobs found near "${location.trim()}". Try a larger area or clear the location filter.` : "No open listings found right now."}
             </p>
           )}
           {jobs?.map((j) => (

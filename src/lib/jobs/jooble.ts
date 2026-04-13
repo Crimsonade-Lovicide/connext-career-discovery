@@ -79,9 +79,9 @@ export type JoobleJob = {
                                                                                                                                               return keywords.some((kw) => text.includes(kw));
                                                                                                                                                 });
 
-                                                                                                                                                  // If filtering removed everything, fall back to unfiltered results
-                                                                                                                                                    // (better to show something than nothing).
-                                                                                                                                                      const pool = relevant.length > 0 ? relevant : rawJobs;
+                                                                                                                                                  // Only return jobs that actually match the search keywords.
+                                                                                                                                                    // Returns empty array if no relevant jobs exist for this search.
+                                                                                                                                                      const pool = relevant;
 
                                                                                                                                                         return pool.slice(0, limit).map((j) => ({
                                                                                                                                                             id: j.id || String(Math.random()),

@@ -24,6 +24,7 @@ export default function Report({
   onReset,
   readOnly = false,
 }: ReportProps) {
+  const [location, setLocation] = useState("");
   const confirmReset = () => {
     if (
       window.confirm(

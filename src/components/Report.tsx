@@ -98,9 +98,22 @@ export default function Report({
           </h3>
           <span className="text-[11px] text-white/30">Live listings via Jooble</span>
         </div>
+                  <div className="relative mt-3">
+                                <svg className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-white/40" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                                              <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                                            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                                                                        </svg>
+                                                                                    <input
+                                                                                                  type="text"
+                                                                                                                value={location}
+                                                                                                                              onChange={(e) => setLocation(e.target.value)}
+                                                                                                                                            placeholder="Filter by city or state (e.g. Denver, CO)"
+                                                                                                                                                          className="w-full rounded-lg border border-white/10 bg-white/5 py-2 pl-9 pr-3 text-sm text-white placeholder:text-white/30 focus:border-violet-400 focus:outline-none focus:ring-1 focus:ring-violet-400"
+                                                                                                                                                                      />
+                                                                                                                                                                                </div>
         <div className="space-y-3">
           {careers.map((c, i) => (
-            <CareerCard key={c.title} career={c} index={i} />
+            <CareerCard key={c.title} career={c} index={i} location={location} />
           ))}
         </div>
       </section>
@@ -189,11 +202,12 @@ type JobListing = {
   salary?: string;
 };
 
-function CareerCard({ career, index }: { career: CareerMatch; index: number }) {
+function CareerCard({ career, index, location }: { career: CareerMatch; index: number; location: string }) {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [jobs, setJobs] = useState<JobListing[] | null>(null);
   const [error, setError] = useState<string | null>(null);
+
 
   async function loadJobs() {
     if (jobs) {
@@ -205,7 +219,7 @@ function CareerCard({ career, index }: { career: CareerMatch; index: number }) {
     setOpen(true);
     try {
       const res = await fetch(
-        `/ConnexT/api/jobs?title=${encodeURIComponent(career.title)}`
+        `/ConnexT/api/jobs?title=${encodeURIComponent(career.title)}${location.trim() ? `&where=${encodeURIComponent(location.trim())}` : ""}`
       );
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);

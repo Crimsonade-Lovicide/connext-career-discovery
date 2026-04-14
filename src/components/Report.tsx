@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import type { Scores } from "@/lib/assessments/scoring";
 import type { CareerMatch } from "@/lib/careers/match";
 
@@ -208,6 +208,17 @@ function CareerCard({ career, index, location }: { career: CareerMatch; index: n
   const [jobs, setJobs] = useState<JobListing[] | null>(null);
   const [error, setError] = useState<string | null>(null);
 
+  // Clear cached jobs whenever the location changes so the next
+  // "Open roles" click fetches fresh results for the new location.
+  const prevLocation = useRef(location);
+  useEffect(() => {
+    if (prevLocation.current !== location) {
+      prevLocation.current = location;
+      setJobs(null);
+      setOpen(false);
+      setError(null);
+    }
+  }, [location]);
 
   async function loadJobs() {
     if (jobs) {

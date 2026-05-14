@@ -4,10 +4,13 @@ import React, { useState, useRef } from 'react';
 import { Sparkles, Loader2, BookOpen, Scale, Upload, X, FileText, AlertCircle } from 'lucide-react';
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
-const SUPPORTED_TYPES = {
+const SUPPORTED_TYPES: Record<string, string> = {
   'application/pdf': 'PDF',
   'application/vnd.openxmlformats-officedocument.wordprocessingml.document': 'DOCX',
+  'application/msword': 'DOC',
   'text/plain': 'TXT',
+  'text/rtf': 'RTF',
+  'application/rtf': 'RTF',
   'image/jpeg': 'JPG',
   'image/png': 'PNG',
 };
@@ -45,13 +48,32 @@ async function extractTextFromDOCX(file: File): Promise<string> {
   return result.value;
 }
 
+function extractTextFromRTF(rtfContent: string): string {
+  // Basic RTF to plain text conversion - strips RTF control words and formatting
+  let text = rtfContent;
+  // Remove RTF header
+  text = text.replace(/^\{\\rtf1[^}]*\}/gm, '');
+  // Remove control words
+  text = text.replace(/\\[a-z]+(-?\d+)? ?/gi, '');
+  // Remove braces
+  text = text.replace(/[{}]/g, '');
+  // Handle special characters
+  text = text.replace(/\\'([0-9a-f]{2})/gi, (_, hex) => String.fromCharCode(parseInt(hex, 16)));
+  // Clean up whitespace
+  text = text.replace(/\r\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim();
+  return text;
+}
+
 async function extractTextFromFile(file: File): Promise<string> {
   if (file.type === 'application/pdf') {
     return extractTextFromPDF(file);
-  } else if (file.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
+  } else if (file.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' || file.type === 'application/msword') {
     return extractTextFromDOCX(file);
   } else if (file.type === 'text/plain') {
     return file.text();
+  } else if (file.type === 'text/rtf' || file.type === 'application/rtf') {
+    const rtfContent = await file.text();
+    return extractTextFromRTF(rtfContent);
   } else if (file.type.startsWith('image/')) {
     return `[Image file: ${file.name}. Image analysis is not yet supported. Please describe the content of the image in the text area above, or copy and paste any text from the image.]`;
   }
@@ -83,7 +105,7 @@ export function AILegalAssistant() {
     
     // Check file type
     if (!Object.keys(SUPPORTED_TYPES).includes(file.type)) {
-      setFileError(`Unsupported file type. Please upload PDF, DOCX, TXT, JPG, or PNG files.`);
+      setFileError(`Unsupported file type. Please upload PDF, DOCX, DOC, TXT, RTF, JPG, or PNG files.`);
       if (fileInputRef.current) fileInputRef.current.value = '';
       return;
     }
@@ -224,7 +246,7 @@ export function AILegalAssistant() {
                 type="file"
                 ref={fileInputRef}
                 onChange={handleFileSelect}
-                accept=".pdf,.docx,.txt,.jpg,.jpeg,.png"
+                accept=".pdf,.docx,.doc,.txt,.rtf,.jpg,.jpeg,.png"
                 className="hidden"
                 id="file-upload"
               />
@@ -240,7 +262,7 @@ export function AILegalAssistant() {
                 {isProcessingFile ? 'Processing...' : 'Upload Document'}
               </label>
               
-              <span className="text-xs text-gray-500">PDF, DOCX, TXT, JPG, PNG (max 5MB)</span>
+              <span className="text-xs text-gray-500">PDF, DOCX, DOC, TXT, RTF, JPG, PNG (max 5MB)</span>
             </div>
 
             {/* Attached File Pill */}

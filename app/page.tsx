@@ -305,7 +305,9 @@ export default function HomePage() {
       </section>
 
       {/* AI Legal Assistant Section */}
-      <AILegalAssistant />
+      <div id="ai-assistant">
+        <AILegalAssistant />
+      </div>
 
       {/* Built Differently Section */}
       <section className="py-24 bg-gradient-to-b from-[#08080C] to-[#0A0A0F] relative overflow-hidden">

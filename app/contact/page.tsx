@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { ScrollRevealSection } from "@/components/scroll-reveal-section"
@@ -29,31 +30,10 @@ const practiceAreas = [
   "Other",
 ]
 
-const contactInfo = [
-  {
-    icon: Phone,
-    title: "Call Us",
-    content: "(845) 274-1100",
-    subtext: "Mon-Fri 8am-8pm, Sat 9am-5pm",
-    gradient: "from-emerald-500 to-teal-500",
-  },
-  {
-    icon: Mail,
-    title: "Email Us",
-    content: "eric@aisquire.io",
-    subtext: "Response within 24 hours",
-    gradient: "from-blue-500 to-cyan-500",
-  },
-  {
-    icon: Clock,
-    title: "AI Available",
-    content: "24/7 Availability",
-    subtext: "Instant AI consultation",
-    gradient: "from-amber-500 to-orange-500",
-  },
-]
+
 
 export default function ContactPage() {
+  const router = useRouter()
   const [formState, setFormState] = useState({
     firstName: "",
     lastName: "",
@@ -115,22 +95,67 @@ export default function ContactPage() {
       <section className="py-8">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {contactInfo.map((info, index) => (
-              <ScrollRevealSection key={info.title} delay={index * 100}>
-                <div className="glass-premium rounded-2xl p-6 glow-card h-full group relative overflow-hidden">
-                  <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${info.gradient} opacity-10 rounded-full blur-2xl group-hover:opacity-20 transition-opacity`} />
-                  
-                  <div className="relative z-10">
-                    <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${info.gradient} flex items-center justify-center mb-5 shadow-lg group-hover:scale-110 transition-transform`}>
-                      <info.icon className="w-7 h-7 text-white" />
-                    </div>
-                    <h3 className="text-white font-semibold mb-1">{info.title}</h3>
-                    <p className="text-[#2563EB] font-medium mb-1">{info.content}</p>
-                    <p className="text-gray-500 text-sm">{info.subtext}</p>
+            {/* Call Us Box */}
+            <ScrollRevealSection delay={0}>
+              <a
+                href="tel:+18452741100"
+                className="glass-premium rounded-2xl p-6 glow-card h-full group relative overflow-hidden block cursor-pointer hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(16,185,129,0.2)] transition-all duration-300"
+              >
+                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-emerald-500 to-teal-500 opacity-10 rounded-full blur-2xl group-hover:opacity-30 transition-opacity" />
+                
+                <div className="relative z-10">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center mb-5 shadow-lg group-hover:scale-110 transition-transform">
+                    <Phone className="w-7 h-7 text-white" />
                   </div>
+                  <h3 className="text-white font-semibold mb-1">Call Us</h3>
+                  <p className="text-[#2563EB] font-medium mb-1 group-hover:text-emerald-400 transition-colors">(845) 274-1100</p>
+                  <p className="text-gray-500 text-sm">Mon-Fri 8am-8pm, Sat 9am-5pm</p>
                 </div>
-              </ScrollRevealSection>
-            ))}
+              </a>
+            </ScrollRevealSection>
+
+            {/* Email Us Box */}
+            <ScrollRevealSection delay={100}>
+              <a
+                href="mailto:eric@aisquire.io"
+                className="glass-premium rounded-2xl p-6 glow-card h-full group relative overflow-hidden block cursor-pointer hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(59,130,246,0.2)] transition-all duration-300"
+              >
+                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-blue-500 to-cyan-500 opacity-10 rounded-full blur-2xl group-hover:opacity-30 transition-opacity" />
+                
+                <div className="relative z-10">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mb-5 shadow-lg group-hover:scale-110 transition-transform">
+                    <Mail className="w-7 h-7 text-white" />
+                  </div>
+                  <h3 className="text-white font-semibold mb-1">Email Us</h3>
+                  <p className="text-[#2563EB] font-medium mb-1 group-hover:text-cyan-400 transition-colors">eric@aisquire.io</p>
+                  <p className="text-gray-500 text-sm">Response within 24 hours</p>
+                </div>
+              </a>
+            </ScrollRevealSection>
+
+            {/* AI Available Box */}
+            <ScrollRevealSection delay={200}>
+              <button
+                onClick={() => {
+                  router.push('/')
+                  setTimeout(() => {
+                    document.getElementById('ai-assistant')?.scrollIntoView({ behavior: 'smooth' })
+                  }, 100)
+                }}
+                className="glass-premium rounded-2xl p-6 glow-card h-full group relative overflow-hidden block cursor-pointer hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(245,158,11,0.2)] transition-all duration-300 w-full text-left"
+              >
+                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-amber-500 to-orange-500 opacity-10 rounded-full blur-2xl group-hover:opacity-30 transition-opacity" />
+                
+                <div className="relative z-10">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center mb-5 shadow-lg group-hover:scale-110 transition-transform">
+                    <Clock className="w-7 h-7 text-white" />
+                  </div>
+                  <h3 className="text-white font-semibold mb-1">AI Available</h3>
+                  <p className="text-[#2563EB] font-medium mb-1 group-hover:text-amber-400 transition-colors">24/7 Availability</p>
+                  <p className="text-gray-500 text-sm">Instant AI consultation</p>
+                </div>
+              </button>
+            </ScrollRevealSection>
           </div>
         </div>
       </section>

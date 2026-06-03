@@ -2,7 +2,7 @@ import { Metadata } from "next"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { ScrollRevealSection } from "@/components/scroll-reveal-section"
-import { Award, BookOpen, Users, Target, Briefcase, GraduationCap, Quote, Linkedin, Twitter } from "lucide-react"
+import { Award, BookOpen, Users, Target, Briefcase, GraduationCap, Quote } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "About Us | A.I. Esquire Legal",
@@ -13,7 +13,7 @@ const values = [
   {
     icon: Target,
     title: "Client-Centered Approach",
-    description: "Every decision we make is guided by what&apos;s best for our clients and their cases.",
+    description: "Every decision we make is guided by what's best for our clients and their cases.",
     gradient: "from-rose-500/20 to-pink-500/20",
   },
   {
@@ -42,12 +42,6 @@ const milestones = [
   { year: "2021", title: "500+ Cases", desc: "Reached milestone of 500 successfully resolved cases" },
   { year: "2023", title: "National Expansion", desc: "Expanded services to all 50 states" },
   { year: "2024", title: "Award Winning", desc: "Named 'Most Innovative Law Firm' by Legal Tech Review" },
-]
-
-const team = [
-  { name: "Eric Hoffman", role: "Founder & Managing Partner", initials: "EH", bio: "Stanford Law, 15+ years experience" },
-  { name: "Sarah Chen", role: "Senior Partner, Family Law", initials: "SC", bio: "Harvard Law, Family Law specialist" },
-  { name: "Michael Torres", role: "Partner, Criminal Defense", initials: "MT", bio: "Yale Law, Former prosecutor" },
 ]
 
 export default function AboutPage() {
@@ -261,42 +255,50 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team Section */}
+      {/* Nationwide Network Section */}
       <section className="py-24 bg-gradient-to-b from-[#08080C] to-[#0A0A0F]">
         <div className="container mx-auto px-4 lg:px-8">
           <ScrollRevealSection>
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                Our <span className="gradient-text">Expert Team</span>
+                Our <span className="gradient-text">Nationwide Network</span>
               </h2>
               <p className="text-gray-400 max-w-2xl mx-auto">
-                A diverse team of attorneys and technologists working together to deliver results.
+                Backed by a vetted network of attorneys across all 50 states, ensuring you receive qualified local counsel wherever you are.
               </p>
             </div>
           </ScrollRevealSection>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {team.map((member, index) => (
-              <ScrollRevealSection key={member.name} delay={index * 100}>
-                <div className="glass-premium rounded-2xl p-8 text-center glow-card group">
-                  <div className="w-28 h-28 mx-auto rounded-full bg-gradient-to-br from-[#2563EB] to-[#3B82F6] flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(37,99,235,0.3)] group-hover:scale-110 group-hover:shadow-[0_0_50px_rgba(37,99,235,0.5)] transition-all duration-300">
-                    <span className="text-3xl font-bold text-white">{member.initials}</span>
-                  </div>
-                  <h3 className="text-xl font-semibold text-white">{member.name}</h3>
-                  <p className="text-[#2563EB] text-sm mt-1">{member.role}</p>
-                  <p className="text-gray-500 text-sm mt-3">{member.bio}</p>
-                  
-                  <div className="flex justify-center gap-3 mt-6">
-                    <a href="#" className="w-9 h-9 rounded-lg glass flex items-center justify-center text-gray-400 hover:text-[#2563EB] transition-colors">
-                      <Linkedin className="w-4 h-4" />
-                    </a>
-                    <a href="#" className="w-9 h-9 rounded-lg glass flex items-center justify-center text-gray-400 hover:text-[#2563EB] transition-colors">
-                      <Twitter className="w-4 h-4" />
-                    </a>
-                  </div>
+            <ScrollRevealSection delay={0}>
+              <div className="glass-premium rounded-2xl p-8 text-center glow-card group">
+                <div className="w-16 h-16 mx-auto rounded-xl bg-[#2563EB]/10 flex items-center justify-center mb-6 group-hover:bg-[#2563EB] group-hover:scale-110 transition-all duration-300">
+                  <Users className="w-8 h-8 text-[#2563EB] group-hover:text-white transition-colors" />
                 </div>
-              </ScrollRevealSection>
-            ))}
+                <h3 className="text-xl font-semibold text-white">Vetted Attorneys</h3>
+                <p className="text-gray-400 text-sm mt-3">Every attorney in our network is thoroughly vetted for credentials, experience, and client outcomes.</p>
+              </div>
+            </ScrollRevealSection>
+
+            <ScrollRevealSection delay={100}>
+              <div className="glass-premium rounded-2xl p-8 text-center glow-card group">
+                <div className="w-16 h-16 mx-auto rounded-xl bg-[#2563EB]/10 flex items-center justify-center mb-6 group-hover:bg-[#2563EB] group-hover:scale-110 transition-all duration-300">
+                  <Target className="w-8 h-8 text-[#2563EB] group-hover:text-white transition-colors" />
+                </div>
+                <h3 className="text-xl font-semibold text-white">Local Expertise</h3>
+                <p className="text-gray-400 text-sm mt-3">We match you with attorneys who know your jurisdiction's laws, courts, and procedures inside and out.</p>
+              </div>
+            </ScrollRevealSection>
+
+            <ScrollRevealSection delay={200}>
+              <div className="glass-premium rounded-2xl p-8 text-center glow-card group">
+                <div className="w-16 h-16 mx-auto rounded-xl bg-[#2563EB]/10 flex items-center justify-center mb-6 group-hover:bg-[#2563EB] group-hover:scale-110 transition-all duration-300">
+                  <Award className="w-8 h-8 text-[#2563EB] group-hover:text-white transition-colors" />
+                </div>
+                <h3 className="text-xl font-semibold text-white">Quality Assured</h3>
+                <p className="text-gray-400 text-sm mt-3">AI-powered case tracking and quality monitoring ensure consistent, high-caliber representation.</p>
+              </div>
+            </ScrollRevealSection>
           </div>
         </div>
       </section>

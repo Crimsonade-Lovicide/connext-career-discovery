@@ -3,7 +3,7 @@ import Link from "next/link"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { ScrollRevealSection } from "@/components/scroll-reveal-section"
-import { ArrowRight, Calendar, Clock, User, Sparkles, TrendingUp } from "lucide-react"
+import { ArrowRight, Calendar, Clock, User, Sparkles, TrendingUp, Cpu, Heart, Shield, FileText, Globe, Scale } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Blog | A.I. Esquire Legal",
@@ -13,11 +13,11 @@ export const metadata: Metadata = {
 const blogPosts = [
   {
     id: 1,
-    title: "How AI is Revolutionizing Legal Research in 2024",
+    title: "How AI is Revolutionizing Legal Research in 2026",
     excerpt: "Discover how artificial intelligence is transforming the way attorneys conduct legal research, analyze precedents, and build stronger cases for their clients.",
     category: "AI & Technology",
     author: "Eric Hoffman",
-    date: "March 15, 2024",
+    date: "May 28, 2026",
     readTime: "8 min read",
     featured: true,
   },
@@ -26,8 +26,8 @@ const blogPosts = [
     title: "5 Things to Know Before Filing for Divorce",
     excerpt: "Navigating a divorce can be overwhelming. Here are the essential things you need to understand before beginning the process to protect your interests.",
     category: "Family Law",
-    author: "Sarah Chen",
-    date: "March 10, 2024",
+    author: "Eric Hoffman",
+    date: "May 22, 2026",
     readTime: "6 min read",
     featured: false,
   },
@@ -36,8 +36,8 @@ const blogPosts = [
     title: "Understanding Your Rights During a Traffic Stop",
     excerpt: "Know your constitutional rights when interacting with law enforcement during a traffic stop. This knowledge could be crucial if you ever face criminal charges.",
     category: "Criminal Defense",
-    author: "Michael Torres",
-    date: "March 5, 2024",
+    author: "Eric Hoffman",
+    date: "May 15, 2026",
     readTime: "5 min read",
     featured: false,
   },
@@ -47,17 +47,17 @@ const blogPosts = [
     excerpt: "Even with good intentions, common estate planning errors can lead to unintended consequences. Learn how to avoid the pitfalls that could hurt your loved ones.",
     category: "Estate Planning",
     author: "Eric Hoffman",
-    date: "February 28, 2024",
+    date: "May 8, 2026",
     readTime: "7 min read",
     featured: false,
   },
   {
     id: 5,
-    title: "Navigating the 2024 Immigration Policy Changes",
+    title: "Navigating the 2026 Immigration Policy Changes",
     excerpt: "Recent policy updates have significant implications for visa applications and green card processes. Stay informed about what these changes mean for you.",
     category: "Immigration",
-    author: "Maria Gonzalez",
-    date: "February 20, 2024",
+    author: "Eric Hoffman",
+    date: "April 30, 2026",
     readTime: "9 min read",
     featured: false,
   },
@@ -66,12 +66,21 @@ const blogPosts = [
     title: "What to Do After a Car Accident: A Legal Guide",
     excerpt: "The steps you take immediately after an accident can significantly impact your personal injury claim. Follow this comprehensive guide to protect your rights.",
     category: "Personal Injury",
-    author: "James Wilson",
-    date: "February 15, 2024",
+    author: "Eric Hoffman",
+    date: "April 22, 2026",
     readTime: "6 min read",
     featured: false,
   },
 ]
+
+const categoryIcons: Record<string, React.ComponentType<{ className?: string }>> = {
+  "AI & Technology": Cpu,
+  "Family Law": Heart,
+  "Criminal Defense": Shield,
+  "Estate Planning": FileText,
+  "Immigration": Globe,
+  "Personal Injury": Scale,
+}
 
 const categoryStyles: Record<string, { bg: string; text: string; gradient: string }> = {
   "AI & Technology": { bg: "bg-violet-500/20", text: "text-violet-400", gradient: "from-violet-500 to-purple-500" },
@@ -209,6 +218,7 @@ export default function BlogPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {regularPosts.map((post, index) => {
               const style = categoryStyles[post.category]
+              const IconComponent = categoryIcons[post.category] || FileText
               return (
                 <ScrollRevealSection key={post.id} delay={index * 100}>
                   <Link href="#" className="block group h-full">
@@ -216,8 +226,11 @@ export default function BlogPage() {
                       {/* Image/Visual Area */}
                       <div className={`aspect-video bg-gradient-to-br ${style.gradient}/10 flex items-center justify-center relative overflow-hidden`}>
                         <div className={`absolute inset-0 bg-gradient-to-br ${style.gradient} opacity-5 group-hover:opacity-10 transition-opacity`} />
+                        {/* Decorative background elements */}
+                        <div className={`absolute -top-8 -right-8 w-32 h-32 bg-gradient-to-br ${style.gradient} rounded-full opacity-10 blur-2xl`} />
+                        <div className={`absolute -bottom-4 -left-4 w-24 h-24 bg-gradient-to-br ${style.gradient} rounded-full opacity-10 blur-xl`} />
                         <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${style.gradient} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                          <span className="text-2xl font-bold text-white">{post.category.charAt(0)}</span>
+                          <IconComponent className="w-8 h-8 text-white" />
                         </div>
                         <span className={`absolute top-4 left-4 px-3 py-1.5 rounded-full text-xs font-medium ${style.bg} ${style.text}`}>
                           {post.category}
@@ -234,8 +247,8 @@ export default function BlogPage() {
                         </p>
                         <div className="flex items-center justify-between text-xs text-gray-500 pt-4 border-t border-white/5">
                           <div className="flex items-center gap-2">
-                            <div className="w-6 h-6 rounded-full bg-[#2563EB]/20 flex items-center justify-center">
-                              <User className="w-3 h-3 text-[#2563EB]" />
+                            <div className="w-6 h-6 rounded-full bg-gradient-to-br from-[#2563EB] to-[#3B82F6] flex items-center justify-center">
+                              <span className="text-white text-[9px] font-bold">EH</span>
                             </div>
                             <span>{post.author}</span>
                           </div>

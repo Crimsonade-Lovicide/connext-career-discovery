@@ -33,7 +33,7 @@ const practiceAreas = [
   {
     icon: Clock,
     title: "Estate Planning",
-    description: "Wills, trusts, and asset protection for your family&apos;s future.",
+    description: "Wills, trusts, and asset protection for your family's future.",
     gradient: "from-amber-500/20 to-yellow-500/20",
   },
 ]
@@ -99,21 +99,21 @@ export default function HomePage() {
 
             {/* Main Headline */}
             <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold mb-6 leading-[1.1]">
-              <span className="block animate-fade-up" style={{ animationDelay: '0.1s' }}>
+              <span className="block animate-fade-up" style={{ animationDelay: '0.05s' }}>
                 <span className="gradient-text-animated text-glow">Legal Representation.</span>
               </span>
-              <span className="block text-white animate-fade-up" style={{ animationDelay: '0.2s' }}>
-                <AnimatedText text="Reimagined." delay={400} />
+              <span className="block text-white animate-fade-up" style={{ animationDelay: '0.1s' }}>
+                <AnimatedText text="Reimagined." delay={200} />
               </span>
             </h1>
 
-            <p className="text-lg md:text-xl text-gray-400 mb-12 max-w-2xl mx-auto animate-fade-up leading-relaxed" style={{ animationDelay: '0.3s' }}>
-              Experience the future of law. Our AI-enhanced legal team delivers 
+            <p className="text-lg md:text-xl text-gray-400 mb-12 max-w-2xl mx-auto animate-fade-up leading-relaxed" style={{ animationDelay: '0.15s' }}>
+              Experience the future of law. Our AI-enhanced legal team delivers
               faster insights, smarter strategies, and better outcomes for your case.
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up" style={{ animationDelay: '0.4s' }}>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up" style={{ animationDelay: '0.2s' }}>
               <MagneticButton href="/contact" size="lg" className="px-8 py-6 text-lg">
                 Get a Free Consultation
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -358,7 +358,7 @@ export default function HomePage() {
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-3">AI-First Workflow</h3>
                 <p className="text-gray-400 leading-relaxed">
-                  We use modern AI to draft, review, and analyze faster — so you get clearer answers, lower costs, and a free initial consultation.
+                  We use modern AI to draft, review, and analyze faster â so you get clearer answers, lower costs, and a free initial consultation.
                 </p>
               </div>
             </ScrollRevealSection>

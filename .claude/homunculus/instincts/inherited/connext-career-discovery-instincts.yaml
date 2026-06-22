@@ -1,0 +1,413 @@
+# Instincts generated from https://github.com/Crimsonade-Lovicide/connext-career-discovery
+# Generated: 2026-05-14T03:06:53.972Z
+# Version: 2.0
+# NOTE: This file supplements (does not replace) any existing curated instincts.
+# High-confidence manually curated instincts should be preserved alongside these.
+
+---
+id: connext-career-discovery-commit-length
+trigger: "when writing a commit message"
+confidence: 0.6
+domain: git
+source: repo-analysis
+source_repo: https://github.com/Crimsonade-Lovicide/connext-career-discovery
+---
+
+# Connext Career Discovery Commit Length
+
+## Action
+
+Keep commit messages concise (~32 characters)
+
+## Evidence
+
+- Average commit message length: 32 chars
+- Based on 2 commits
+
+---
+id: connext-career-discovery-naming-files
+trigger: "when creating a new file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/Crimsonade-Lovicide/connext-career-discovery
+---
+
+# Connext Career Discovery Naming Files
+
+## Action
+
+Use camelCase naming convention
+
+## Evidence
+
+- Analyzed file naming patterns in repository
+- Dominant pattern: camelCase
+
+---
+id: connext-career-discovery-import-alias
+trigger: "when importing modules"
+confidence: 0.85
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/Crimsonade-Lovicide/connext-career-discovery
+---
+
+# Connext Career Discovery Import Alias
+
+## Action
+
+Use path aliases (@/, ~/) instead of relative imports
+
+## Evidence
+
+- Import analysis shows alias pattern
+- Example: import { x } from '@/lib/x'
+
+---
+id: connext-career-discovery-export-style
+trigger: "when exporting from a module"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/Crimsonade-Lovicide/connext-career-discovery
+---
+
+# Connext Career Discovery Export Style
+
+## Action
+
+Prefer mixed exports
+
+## Evidence
+
+- Export pattern analysis
+- Dominant style: mixed
+
+---
+id: connext-career-discovery-arch-type-based
+trigger: "when adding new code"
+confidence: 0.8
+domain: architecture
+source: repo-analysis
+source_repo: https://github.com/Crimsonade-Lovicide/connext-career-discovery
+---
+
+# Connext Career Discovery Arch Type Based
+
+## Action
+
+Place code in the appropriate type folder (components/, services/, utils/, etc.)
+
+## Evidence
+
+- Type-based module organization detected
+- Folders: app, components, lib
+
+---
+id: connext-career-discovery-test-separate
+trigger: "when writing tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/Crimsonade-Lovicide/connext-career-discovery
+---
+
+# Connext Career Discovery Test Separate
+
+## Action
+
+Place tests in the tests/ or __tests__/ directory, mirroring src structure
+
+## Evidence
+
+- Separate test directory pattern detected
+- Tests live in dedicated test folders
+
+---
+id: connext-career-discovery-instinct-file-naming
+trigger: "When creating a new file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: Crimsonade-Lovicide/connext-career-discovery
+---
+
+# Connext Career Discovery Instinct File Naming
+
+## Action
+
+Name the file using camelCase
+
+## Evidence
+
+- Pattern in namingConventions.files
+
+---
+id: connext-career-discovery-instinct-function-naming
+trigger: "When defining a new function"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: Crimsonade-Lovicide/connext-career-discovery
+---
+
+# Connext Career Discovery Instinct Function Naming
+
+## Action
+
+Name the function using camelCase
+
+## Evidence
+
+- Pattern in namingConventions.functions
+
+---
+id: connext-career-discovery-instinct-class-naming
+trigger: "When defining a new class"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: Crimsonade-Lovicide/connext-career-discovery
+---
+
+# Connext Career Discovery Instinct Class Naming
+
+## Action
+
+Name the class using PascalCase
+
+## Evidence
+
+- Pattern in namingConventions.classes
+
+---
+id: connext-career-discovery-instinct-constant-naming
+trigger: "When defining a constant"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: Crimsonade-Lovicide/connext-career-discovery
+---
+
+# Connext Career Discovery Instinct Constant Naming
+
+## Action
+
+Name the constant using SCREAMING_SNAKE_CASE
+
+## Evidence
+
+- Pattern in namingConventions.constants
+
+---
+id: connext-career-discovery-instinct-import-style
+trigger: "When importing modules"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: Crimsonade-Lovicide/connext-career-discovery
+---
+
+# Connext Career Discovery Instinct Import Style
+
+## Action
+
+Use import aliases as per the alias style
+
+## Evidence
+
+- Pattern in importStyle: alias
+
+---
+id: connext-career-discovery-instinct-export-style
+trigger: "When exporting modules or functions"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: Crimsonade-Lovicide/connext-career-discovery
+---
+
+# Connext Career Discovery Instinct Export Style
+
+## Action
+
+Use mixed export style (both named and default exports as appropriate)
+
+## Evidence
+
+- Pattern in exportStyle: mixed
+
+---
+id: connext-career-discovery-instinct-commit-prefix
+trigger: "When writing a commit message for a new feature"
+confidence: 0.9
+domain: git
+source: repo-analysis
+source_repo: Crimsonade-Lovicide/connext-career-discovery
+---
+
+# Connext Career Discovery Instinct Commit Prefix
+
+## Action
+
+Prefix the commit message with 'feat:'
+
+## Evidence
+
+- Seen in commit: 'feat: make contact info boxes interactive'
+- Pattern in commits.prefixes
+
+---
+id: connext-career-discovery-instinct-commit-length
+trigger: "When writing a commit message"
+confidence: 0.7
+domain: git
+source: repo-analysis
+source_repo: Crimsonade-Lovicide/connext-career-discovery
+---
+
+# Connext Career Discovery Instinct Commit Length
+
+## Action
+
+Keep the commit message concise, around 32 characters on average
+
+## Evidence
+
+- Pattern in commits.averageLength
+
+---
+id: connext-career-discovery-instinct-commit-type-mixed
+trigger: "When making a commit"
+confidence: 0.6
+domain: git
+source: repo-analysis
+source_repo: Crimsonade-Lovicide/connext-career-discovery
+---
+
+# Connext Career Discovery Instinct Commit Type Mixed
+
+## Action
+
+Use mixed commit types, not limited to a single type
+
+## Evidence
+
+- Pattern in commits.type: mixed
+
+---
+id: connext-career-discovery-instinct-error-handling-try-catch
+trigger: "When handling errors in code"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: Crimsonade-Lovicide/connext-career-discovery
+---
+
+# Connext Career Discovery Instinct Error Handling Try Catch
+
+## Action
+
+Use try-catch blocks for error handling
+
+## Evidence
+
+- Pattern in errorHandling.style: try-catch
+
+---
+id: connext-career-discovery-instinct-no-custom-error-classes
+trigger: "When defining error handling logic"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: Crimsonade-Lovicide/connext-career-discovery
+---
+
+# Connext Career Discovery Instinct No Custom Error Classes
+
+## Action
+
+Do not use custom error classes
+
+## Evidence
+
+- Pattern in errorHandling.customErrorClasses: false
+
+---
+id: connext-career-discovery-instinct-no-error-boundaries
+trigger: "When considering React error boundaries"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: Crimsonade-Lovicide/connext-career-discovery
+---
+
+# Connext Career Discovery Instinct No Error Boundaries
+
+## Action
+
+Do not implement error boundaries
+
+## Evidence
+
+- Pattern in errorHandling.errorBoundaries: false
+
+---
+id: connext-career-discovery-instinct-no-global-error-handler
+trigger: "When considering a global error handler"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: Crimsonade-Lovicide/connext-career-discovery
+---
+
+# Connext Career Discovery Instinct No Global Error Handler
+
+## Action
+
+Do not implement a global error handler
+
+## Evidence
+
+- Pattern in errorHandling.globalHandler: false
+
+---
+id: connext-career-discovery-instinct-test-location
+trigger: "When adding or organizing tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: Crimsonade-Lovicide/connext-career-discovery
+---
+
+# Connext Career Discovery Instinct Test Location
+
+## Action
+
+Place test files in a separate location from source files
+
+## Evidence
+
+- Pattern in architecture.folderStructure.testLocation: separate
+
+---
+id: connext-career-discovery-instinct-type-based-modules
+trigger: "When organizing modules"
+confidence: 0.8
+domain: architecture
+source: repo-analysis
+source_repo: Crimsonade-Lovicide/connext-career-discovery
+---
+
+# Connext Career Discovery Instinct Type Based Modules
+
+## Action
+
+Organize modules by type (e.g., components, lib, hooks)
+
+## Evidence
+
+- Pattern in architecture.moduleOrganization: type-based
+- Pattern in folderStructure.srcLayout
+
